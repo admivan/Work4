@@ -15,7 +15,8 @@ public class Work3 {
     public static int DOT_WIN = 3;
 
     public static void main(String[] args) {
-       startGame();
+
+        startGame();
     }
 
     private static void restarGame() {
@@ -67,32 +68,15 @@ public class Work3 {
         restarGame();// перезапуск победы
     }
 
-    public static boolean checkDot(char symb, int x, int y, int win){
-        int counter=0;
-        for (int i = 0; i<win;i++){
-            if (x == y && map[x][y] == symb) {
-                counter++;
-            }
-        }
-        if (counter == win) {
-            return true;
-        } else {
-            counter = 0;
-        }
-        return false;
-    }
     /**
      * Проверка победы циклами
      * @param symb принимаем символ
      * @return возвращаем true and false
      */
+
+    // TODO на большее головы не хватает походу глупенький(
     private static boolean checkWin(char symb) {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                checkDot(symb,i, j,DOT_WIN);
-            }
-        }
-      /*  int counter = 0;
+        int counter = 0;
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (i == j && map[i][j] == symb) {
@@ -100,7 +84,7 @@ public class Work3 {
                 }
             }
         }
-        if (counter == DOT_WIN) {
+        if (counter == SIZE) {
             return true;
         } else {
             counter = 0;
@@ -114,7 +98,7 @@ public class Work3 {
             }
         }
 
-        if (counter == DOT_WIN) {
+        if (counter == SIZE) {
             return true;
         } else {
             counter = 0;
@@ -126,7 +110,7 @@ public class Work3 {
 
                 }
             }
-            if (counter == DOT_WIN) {
+            if (counter == SIZE) {
                 return true;
             } else {
                 counter = 0;
@@ -138,18 +122,19 @@ public class Work3 {
                     counter++;
                 }
             }
-            if (counter == DOT_WIN) {
+            if (counter == SIZE) {
                 return true;
             } else {
                 counter = 0;
             }
-        }*/
+        }
         return false;
     }
 
+
     /**
      * Проверяем есть ли место куда можно поставить символ
-     * @return
+     * @return возвращаем true and false
      */
     public static boolean mapFull() {
         for (int i = 0; i < SIZE; i++) {
@@ -180,7 +165,7 @@ public class Work3 {
      * Проверяем x,y в пределах поля или нет и стоит ли символ в данных кординатах
      * @param x принимем кординату x
      * @param y принимем кординату y
-     * @return
+     * @return возвращаем true and false
      */
     public static boolean isCellValid(int x, int y) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
@@ -190,10 +175,7 @@ public class Work3 {
     }
 
     public static boolean emtyCell(int x, int y){
-        if (map[x][y] == DOT_EMRTY) {
-            return true;
-        }
-        return false;
+        return map[x][y] == DOT_EMRTY;
     }
 
     /**
